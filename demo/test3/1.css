@@ -1,0 +1,21 @@
+.mix {
+  margin: 30px auto 0;
+  width: 122px;
+  height: 62px;
+  z-index: 2;
+  background: url("./logo.png"), cyan no-repeat;
+  background-blend-mode: lighten;
+}
+.mix:after {
+  content: "";
+  position: absolute;
+  width: 122px;
+  height: 62px;
+  z-index: 3;
+  background: url("./logo.png"), red no-repeat;
+  background-blend-mode: lighten;
+  margin-left: 5px;
+  mix-blend-mode: darken;
+}
+
+/*# sourceMappingURL=1.css.map */

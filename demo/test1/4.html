@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灭霸效果</title>
+    <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        cursor: pointer;
+        transform: translateZ(0);
+        background: url(./img/1.png);
+        background-size: cover;
+        background-position: 50% 50%;
+        filter: url(#feDisplacementMap);
+    }
+
+    </style>
+</head>
+<body>
+    <div id="fe1" class="fe1"></div>
+    <svg>
+        <filter id="feDisplacementMap" filterUnits="userSpaceOnUse" x="-50%" y="-50%" width="800px" height="800px">
+            <feTurbulence id="fetur" type="fractalNoise" baseFrequency="0.9" numOctaves="10" result="img" />
+            <feDisplacementMap id="feDis" in="SourceGraphic" in2="img" scale="1" />
+        </filter>
+    </svg>
+
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $("#fe1").click((e) => {
+    const filterFEDIS = $("#feDis");
+    const filterFETUR = $("#fetur");
+    const startTime = Date.now();
+    const duration = 2000;
+    const target = 50 + Math.random() * 600;
+    const targetFrequency = 9.9;
+    const curFrequency = 0.01;
+    
+    requestAnimationFrame(function aniMove() {
+        const t = Math.min(1, (Date.now() - startTime) / duration);
+        const nextTarget = t * target;
+        const nextFrequency = curFrequency + (t * (targetFrequency - curFrequency));
+        const nextOpacity = 1 - t * 1;
+
+        $("div").css('opacity', nextOpacity);
+        filterFETUR.attr('baseFrequency', nextFrequency);
+        filterFEDIS.attr('scale', nextTarget);
+
+        if (t < 1.0) {
+            requestAnimationFrame(aniMove)
+        } else {
+            setTimeout(() => {
+                $("div").css('opacity', 1);
+                filterFETUR.attr('baseFrequency', 0.9);
+                filterFEDIS.attr('scale', 1);
+            }, 300);
+        }
+    });
+});
+</script>
+</html>

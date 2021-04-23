@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粒子化</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background: url(./img/1.png) no-repeat;
+      }
+      .fractal {
+        filter: url(#fractal);
+      }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="fractal"></div>
+
+    <svg viewBox="0 0 200 200" width="200px" height="200px">
+        <defs>
+            <filter id="fractal" filterUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+                <feTurbulence type="fractalNoise" baseFrequency="0.995" numOctaves="10" seed="1" stitchTiles="noStitch" result="img" />
+                <feDisplacementMap in="SourceGraphic" in2="img" xChannelSelector="R" yChannelSelector="G" scale="600">
+                    <animate attributeName="scale" values="600;0;0" keyTimes="0;0.75;1" begin="0s" dur="2s" repeatCount="indefinite" />
+                </feDisplacementMap>
+            </filter>
+        </defs>
+    </svg>
+
+</body>
+</html>

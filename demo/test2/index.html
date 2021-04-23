@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滤色模式</title>
+    <style>
+    body {
+        display: flex;
+    }
+    .box {
+        color: #000;
+        width: 200px;
+        height: 200px;
+    }
+    .box1 {
+        background: rgb(255, 0, 255);
+    }
+    .box2 {
+        margin-left: 20px;
+        background: rgb(0,0,255);
+        mix-blend-mode: screen;
+    }
+    .box3 {
+        height: 100%;
+        background: rgb(255,0,0);
+        mix-blend-mode: screen;
+    }
+    </style>
+</head>
+<body>
+    <div class="box box1">我是计算出来的方块</div>
+    <div class="box box2">
+        <div class="box3">我是滤色模式出来的方块</div>
+    </div>
+</body>
+</html>

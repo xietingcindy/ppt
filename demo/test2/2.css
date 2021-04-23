@@ -1,0 +1,10 @@
+.container {
+  width: 400px;
+  height: 500px;
+  margin: 20px auto;
+  background: url("./pic2.jpeg"), url("./star.jpeg");
+  background-size: cover;
+  background-blend-mode: lighten;
+}
+
+/*# sourceMappingURL=2.css.map */
