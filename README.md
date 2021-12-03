@@ -8,4 +8,5 @@
 
 #### 2021年11月12日 第三次分享ppt 微前端
 #### 第三次分享demo-qiankun已上传，可自行fork下试试
+#### 使用方法，fork qiankun,里面有三个子项目，micro为主应用，son为vue子应用，son1为react主应用，npm i下载依赖，分别启动
 
